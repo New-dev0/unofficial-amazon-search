@@ -28,6 +28,7 @@ export default class AmazonSearchResult {
   title: string;
   productUrl: string;
   imageUrl: string;
+  author: string;
   rating: Rating = {score: null, outOf: null};
   prices: Price[] = [];
   sponsored = false;
@@ -82,6 +83,7 @@ export default class AmazonSearchResult {
     this.title = block.querySelector('h2')?.textContent?.trim() ?? '';
     this.imageUrl = block.querySelector('a img')?.getAttribute('src') ?? '';
     this.productUrl = block.querySelector('a')?.getAttribute('href') ?? '';
+    this.author = block.querySelector("span.a-size-base")?.textContent;
     this.rating = AmazonSearchResult.extractRating(block);
     this.prices = AmazonSearchResult.extractPrices(block);
     this.sponsored = AmazonSearchResult.extractIsSponsored(block);
