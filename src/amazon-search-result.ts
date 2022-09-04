@@ -83,7 +83,7 @@ export default class AmazonSearchResult {
     this.title = block.querySelector('h2')?.textContent?.trim() ?? '';
     this.imageUrl = block.querySelector('a img')?.getAttribute('src') ?? '';
     this.productUrl = block.querySelector('a')?.getAttribute('href') ?? '';
-    this.author = block.querySelectorAll("span.a-size-base")[1]?.textContent;
+    this.author = block.querySelector("a.a-size-base")?.textContent || block.querySelectorAll("span.a-size-base")[1]?.textContent;
     this.rating = AmazonSearchResult.extractRating(block);
     this.prices = AmazonSearchResult.extractPrices(block);
     this.sponsored = AmazonSearchResult.extractIsSponsored(block);
